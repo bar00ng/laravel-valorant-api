@@ -11,7 +11,7 @@ class WeaponsController extends Controller
         $weapons = Http::get('https://valorant-api.com/v1/weapons')
             ->json()['data'];
         
-        dump($weapons);
+        // dump($weapons);
 
         return view('listWeapon',[
             'weapons' => $weapons
@@ -22,7 +22,7 @@ class WeaponsController extends Controller
         $weapon = Http::get('https://valorant-api.com/v1/weapons/'.$id)
             ->json()['data'];
         
-        dump($weapon);
+        // dump($weapon);
 
         return view('weapon',[
             'weapon' => $weapon

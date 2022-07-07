@@ -1,16 +1,17 @@
 @extends('parent')
 @section('content')
-<div class="border-b border-red-500">
-  <div class="container mx-auto px-4 py-16 flex flex-col sm:flex-row w-full">
-      <div class="relative bg-white h-80 text-black mb-5">
+<div class="border-b border-red-500 w-full">
+  <h2 class="text-4xl font-semibold text-center uppercase mt-8">{{ $weapon['displayName']}}</h2>
+  <div class="container mx-auto px-4 py-12 flex flex-col sm:flex-row justify-center">
+      <div class="bg-white h-80 text-black flex items-center">
         <img src="{{$weapon['displayIcon']}}" alt="{{$weapon['displayName']}}">
-        <div class="w-full absolute flex justify-between bottom-0 bg-red z-20 px-2">
-          <h1 class="font-bold uppercase text-lg">{{ $weapon['displayName'] }}</h1>
-          <p class="">{{ 'Creds '.number_format($weapon['shopData']['cost']) }}</p>
-        </div>
       </div>
 
       <div class="flex flex-col items-center sm:ml-16">
+        <div class="w-full flex justify-between items-center px-2">
+          <h1 class="font-bold uppercase text-lg">COST :</h1>
+          <p class="">{{ 'Creds '.number_format($weapon['shopData']['cost']) }}</p>
+        </div>
         <div class="grid grid-cols-2 gap-2">
           <div class="max-w-xs min-w-min border border-red-500 h-fit">
             {{-- Header --}}
@@ -129,6 +130,21 @@
           </tbody>
         </table>
       </div>
+  </div>
+</div>
+
+<div class="border-b border-red-500">
+  <div class="container mx-auto px-4 py-16">
+    <h2 class="text-4xl font-semibold text-center uppercase mb-5">{{ $weapon['displayName'].' SKINS ('.count($weapon['skins']).')' }}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-5">
+      @foreach ($weapon['skins'] as $skin)
+        @continue (str_contains($skin['displayName'],'Standard'))
+        <a href="{{$skin['displayIcon']}}" class="hover:bg-white hover:bg-opacity-40 transition ease-in-out duration-150">
+          <img src="{{$skin['displayIcon']}}" alt="{{$skin['displayName']}}">
+          <p class="text-center">{{$skin['displayName']}}</p>
+        </a>
+      @endforeach
+    </div>
   </div>
 </div>
 @endsection
