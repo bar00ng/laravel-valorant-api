@@ -2,13 +2,13 @@
 @section('content')
 <div class="border-b border-red-500 w-full">
   <h2 class="text-4xl font-semibold text-center uppercase mt-8">{{ $weapon['displayName']}}</h2>
-  <div class="container mx-auto px-4 py-12 flex flex-col sm:flex-row justify-center">
+  <div class="container mx-auto px-4 py-12 flex flex-col lg:flex-row justify-center">
       <div class="bg-white h-80 text-black flex items-center">
         <img src="{{$weapon['displayIcon']}}" alt="{{$weapon['displayName']}}">
       </div>
 
       <div class="flex flex-col items-center sm:ml-16">
-        <div class="w-full flex justify-between items-center px-2">
+        <div class="w-full flex lg:justify-between justify-around items-center px-2 my-3">
           <h1 class="font-bold uppercase text-lg">COST :</h1>
           <p class="">{{ 'Creds '.number_format($weapon['shopData']['cost']) }}</p>
         </div>

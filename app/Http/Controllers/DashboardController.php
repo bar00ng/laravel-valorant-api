@@ -12,22 +12,18 @@ class DashboardController extends Controller
             'isPlayableCharacter' => 'true'
         ])->json()['data'];
 
-        $maps = Http::get('https://valorant-api.com/v1/maps')
-            ->json()['data'];
-
         $weapons = Http::get('https://valorant-api.com/v1/weapons')
             ->json()['data'];
 
-        $bundles = Http::get('https://valorant-api.com/v1/bundles')
-            ->json()['data'];
+        $tiers = Http::get('https://valorant-api.com/v1/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04')
+            ->json()['data']['tiers'];
         
-        // dump($bundles);
+        // dump($tiers);
 
         return view('dashboard', [
             'agents' => $agents,
-            'maps' => $maps,
             'weapons' => $weapons,
-            'bundles' => $bundles
+            'tiers' => $tiers
         ]);
     }
 }
